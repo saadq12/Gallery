@@ -5,8 +5,8 @@ const App = () => {
   const [userdata, setuserdata] = useState([])
   const [index, setindex] = useState(1)
   const [loading, setLoading] = useState(false)
-  const [searchTerm, setSearchTerm] = useState('car')
-  const [query, setQuery] = useState('car')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [query, setQuery] = useState('')
 
   const submitSearch = () => {
     if (searchTerm.trim().length === 0) {
@@ -36,15 +36,16 @@ const App = () => {
   const getdata = async () => {
     setLoading(true)
     try {
-      const response = await axios.get('https://api.pexels.com/v1/search', {
+      const endpoint = query ? 'https://api.pexels.com/v1/search' : 'https://api.pexels.com/v1/curated'
+      const params = query
+        ? { query, page: index, per_page: 15 }
+        : { page: index, per_page: 15 }
+
+      const response = await axios.get(endpoint, {
         headers: {
           Authorization: 'AASagXdpsinm3TU8HCVwM3EbQKNbm7523VjovZ9RNT7jaxCuHhg3zb8R'
         },
-        params: {
-          query,
-          page: index,
-          per_page: 15
-        }
+        params
       })
       setuserdata(response.data.photos || [])
     } catch (error) {
