@@ -75,16 +75,11 @@ setuserdata([])
     {
       setindex(index-1)
     }
-   
-   
    }
   }>
     ← Prev
   </button>
-
-
-
-<h2 className="px-5 py-2 bg-zinc-900 text-white text-xl font-bold rounded-xl border border-zinc-700 shadow-lg">
+<h2 className="px-5 py-2 bg-zinc-900 text-white text-xl font-bold rounded-xl border border-zinc-700 shadow-lg text-center">
   Page {index}
 </h2>
 
@@ -92,7 +87,6 @@ setuserdata([])
    ()=>{
     setuserdata([])
     setindex(index+1)
-   
    }
   }>
     Next →
