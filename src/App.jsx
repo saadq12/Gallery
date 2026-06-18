@@ -86,13 +86,13 @@ const App = () => {
           <a href={elem.url} target="_blank" rel="noreferrer">
             <img
               src={elem.src.large}
-              alt={elem.photographer}
+              alt={elem.alt || elem.photographer}
               className="w-full h-52 object-cover"
             />
           </a>
           <div className="p-4">
             <div>
-              <h3 className="text-white font-semibold text-lg">{elem.photographer}</h3>
+              <h3 className="text-white font-semibold text-lg">{elem.alt || 'Untitled image'}</h3>
               <p className="text-zinc-400 text-sm mt-1">Uploaded by Pexels</p>
             </div>
             <div className="mt-4 flex items-center justify-between gap-3">
