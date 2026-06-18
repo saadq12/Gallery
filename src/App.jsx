@@ -3,7 +3,7 @@ import axios from 'axios'
 
 const App = () => {
   const [userdata, setuserdata] = useState([])
-  const [index, setindex] = useState(1)
+  const [index, setindex] = useState(() => Math.floor(Math.random() * 10) + 1)
   const [loading, setLoading] = useState(false)
   const [searchTerm, setSearchTerm] = useState('')
   const [query, setQuery] = useState('')
@@ -14,6 +14,14 @@ const App = () => {
     }
     setindex(1)
     setQuery(searchTerm.trim())
+  }
+
+  const truncateTitle = (text, maxWords = 7) => {
+    const words = (text || '').split(' ').filter(Boolean)
+    if (words.length <= maxWords) {
+      return text
+    }
+    return `${words.slice(0, maxWords).join(' ')}...`
   }
 
   const downloadImage = async (url, filename) => {
@@ -92,7 +100,7 @@ const App = () => {
           </a>
           <div className="p-4">
             <div>
-              <h3 className="text-white font-semibold text-lg">{elem.alt || 'Untitled image'}</h3>
+              <h3 className="text-white font-semibold text-lg">{truncateTitle(elem.alt || 'Untitled image', 6)}</h3>
               <p className="text-zinc-400 text-sm mt-1">Uploaded by Pexels</p>
             </div>
             <div className="mt-4 flex items-center justify-between gap-3">
