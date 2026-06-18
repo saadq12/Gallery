@@ -52,9 +52,18 @@ useEffect(function(){
   }
 
   return (
-    <div className='bg-black h-screen text-white p-4 overflow-auto w-full'>
 
+    <div className='bg-black h-screen text-white p-4 overflow-auto w-full items-center justify-center content-center'>
 
+ <h1 className="text-4xl md:text-5xl font-extrabold text-white tracking-widest uppercase text-center">
+    Project : 02
+  </h1>
+<h1 className="text-4xl md:text-2xl  text-white tracking-widest uppercase text-center">
+    Image Gallery
+  </h1>
+  <p className="text-gray-400 mt-2 text-lg text-center">
+    By Saad Qayyum
+  </p>
       <div className="flex flex-wrap gap-6 mt-8 justify-center">
   {printuserdata}
 </div>
